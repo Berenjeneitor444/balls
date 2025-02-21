@@ -2,6 +2,7 @@ package com.berenjeneitor.theGame.networkPart.model;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class ServerConnector extends AbstractConnector implements Runnable {
     ServerSocket serverSocket;
@@ -33,7 +34,11 @@ public class ServerConnector extends AbstractConnector implements Runnable {
     @Override
     public void run() {
         try {
-            serverSocket.accept();
+            //TODO esto ira al channel
+            Socket connection = serverSocket.accept();
+            // si se conecta, enviar mensaje de inicio
+            System.out.println("Client connected");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
